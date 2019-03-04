@@ -1,0 +1,271 @@
+[2019-02-28 14:55:08.434] [main] [info] [storage] migrating global storage from localStorage into SQLite
+[2019-02-28 14:55:08.434] [main] [info] [storage] migrated global storage
+[2019-02-28 14:55:08.437] [main] [info] update#setState idle
+[2019-02-28 14:55:38.438] [main] [info] update#setState checking for updates
+[2019-02-28 14:55:38.488] [main] [info] update#setState idle
+[2019-02-28 15:55:38.467] [main] [info] update#setState checking for updates
+[2019-02-28 15:55:38.775] [main] [info] update#setState idle
+[2019-02-28 16:55:38.493] [main] [info] update#setState checking for updates
+[2019-02-28 16:55:38.499] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-02-28 16:55:38.500] [main] [info] update#setState idle
+[2019-02-28 17:55:38.514] [main] [info] update#setState checking for updates
+[2019-02-28 17:55:38.517] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-02-28 17:55:38.517] [main] [info] update#setState idle
+[2019-02-28 18:55:38.544] [main] [info] update#setState checking for updates
+[2019-02-28 18:55:38.545] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-02-28 18:55:38.545] [main] [info] update#setState idle
+[2019-02-28 19:55:38.576] [main] [info] update#setState checking for updates
+[2019-02-28 19:55:38.580] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-02-28 19:55:38.580] [main] [info] update#setState idle
+[2019-02-28 20:55:38.607] [main] [info] update#setState checking for updates
+[2019-02-28 20:55:38.609] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-02-28 20:55:38.609] [main] [info] update#setState idle
+[2019-02-28 21:55:38.639] [main] [info] update#setState checking for updates
+[2019-02-28 21:55:38.642] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-02-28 21:55:38.643] [main] [info] update#setState idle
+[2019-02-28 22:55:38.664] [main] [info] update#setState checking for updates
+[2019-02-28 22:55:38.666] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-02-28 22:55:38.666] [main] [info] update#setState idle
+[2019-02-28 23:55:38.696] [main] [info] update#setState checking for updates
+[2019-02-28 23:55:38.700] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-02-28 23:55:38.700] [main] [info] update#setState idle
+[2019-03-01 00:55:38.727] [main] [info] update#setState checking for updates
+[2019-03-01 00:55:38.729] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 00:55:38.729] [main] [info] update#setState idle
+[2019-03-01 01:55:38.755] [main] [info] update#setState checking for updates
+[2019-03-01 01:55:38.757] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 01:55:38.758] [main] [info] update#setState idle
+[2019-03-01 02:55:38.786] [main] [info] update#setState checking for updates
+[2019-03-01 02:55:38.790] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 02:55:38.790] [main] [info] update#setState idle
+[2019-03-01 03:55:38.814] [main] [info] update#setState checking for updates
+[2019-03-01 03:55:38.816] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 03:55:38.816] [main] [info] update#setState idle
+[2019-03-01 04:55:38.846] [main] [info] update#setState checking for updates
+[2019-03-01 04:55:38.848] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 04:55:38.848] [main] [info] update#setState idle
+[2019-03-01 05:55:38.871] [main] [info] update#setState checking for updates
+[2019-03-01 05:55:38.876] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 05:55:38.876] [main] [info] update#setState idle
+[2019-03-01 06:55:38.903] [main] [info] update#setState checking for updates
+[2019-03-01 06:55:38.908] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 06:55:38.908] [main] [info] update#setState idle
+[2019-03-01 07:55:38.935] [main] [info] update#setState checking for updates
+[2019-03-01 07:55:38.939] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 07:55:38.939] [main] [info] update#setState idle
+[2019-03-01 08:55:38.967] [main] [info] update#setState checking for updates
+[2019-03-01 08:55:38.972] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 08:55:38.972] [main] [info] update#setState idle
+[2019-03-01 09:55:38.999] [main] [info] update#setState checking for updates
+[2019-03-01 09:55:39.002] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 09:55:39.002] [main] [info] update#setState idle
+[2019-03-01 10:55:39.031] [main] [info] update#setState checking for updates
+[2019-03-01 10:55:39.033] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 10:55:39.033] [main] [info] update#setState idle
+[2019-03-01 11:55:39.061] [main] [info] update#setState checking for updates
+[2019-03-01 11:55:39.063] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 11:55:39.063] [main] [info] update#setState idle
+[2019-03-01 12:55:39.065] [main] [info] update#setState checking for updates
+[2019-03-01 12:55:39.070] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 12:55:39.070] [main] [info] update#setState idle
+[2019-03-01 13:55:39.099] [main] [info] update#setState checking for updates
+[2019-03-01 13:55:39.100] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 13:55:39.101] [main] [info] update#setState idle
+[2019-03-01 14:55:39.127] [main] [info] update#setState checking for updates
+[2019-03-01 14:55:39.131] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 14:55:39.131] [main] [info] update#setState idle
+[2019-03-01 15:55:39.159] [main] [info] update#setState checking for updates
+[2019-03-01 15:55:39.163] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 15:55:39.163] [main] [info] update#setState idle
+[2019-03-01 16:55:39.191] [main] [info] update#setState checking for updates
+[2019-03-01 16:55:39.195] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 16:55:39.195] [main] [info] update#setState idle
+[2019-03-01 17:55:39.224] [main] [info] update#setState checking for updates
+[2019-03-01 17:55:39.227] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 17:55:39.227] [main] [info] update#setState idle
+[2019-03-01 18:55:39.255] [main] [info] update#setState checking for updates
+[2019-03-01 18:55:39.259] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 18:55:39.259] [main] [info] update#setState idle
+[2019-03-01 19:55:39.268] [main] [info] update#setState checking for updates
+[2019-03-01 19:55:39.272] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 19:55:39.272] [main] [info] update#setState idle
+[2019-03-01 20:55:39.301] [main] [info] update#setState checking for updates
+[2019-03-01 20:55:39.305] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 20:55:39.305] [main] [info] update#setState idle
+[2019-03-01 21:55:39.331] [main] [info] update#setState checking for updates
+[2019-03-01 21:55:39.335] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 21:55:39.335] [main] [info] update#setState idle
+[2019-03-01 22:55:39.363] [main] [info] update#setState checking for updates
+[2019-03-01 22:55:39.367] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 22:55:39.368] [main] [info] update#setState idle
+[2019-03-01 23:55:39.390] [main] [info] update#setState checking for updates
+[2019-03-01 23:55:39.393] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-01 23:55:39.393] [main] [info] update#setState idle
+[2019-03-02 00:55:39.419] [main] [info] update#setState checking for updates
+[2019-03-02 00:55:39.422] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 00:55:39.422] [main] [info] update#setState idle
+[2019-03-02 01:55:39.451] [main] [info] update#setState checking for updates
+[2019-03-02 01:55:39.453] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 01:55:39.453] [main] [info] update#setState idle
+[2019-03-02 02:55:39.483] [main] [info] update#setState checking for updates
+[2019-03-02 02:55:39.485] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 02:55:39.485] [main] [info] update#setState idle
+[2019-03-02 03:55:39.516] [main] [info] update#setState checking for updates
+[2019-03-02 03:55:39.520] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 03:55:39.520] [main] [info] update#setState idle
+[2019-03-02 04:55:39.538] [main] [info] update#setState checking for updates
+[2019-03-02 04:55:39.540] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 04:55:39.541] [main] [info] update#setState idle
+[2019-03-02 05:55:39.571] [main] [info] update#setState checking for updates
+[2019-03-02 05:55:39.573] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 05:55:39.573] [main] [info] update#setState idle
+[2019-03-02 06:55:39.600] [main] [info] update#setState checking for updates
+[2019-03-02 06:55:39.604] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 06:55:39.604] [main] [info] update#setState idle
+[2019-03-02 07:55:39.631] [main] [info] update#setState checking for updates
+[2019-03-02 07:55:39.635] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 07:55:39.636] [main] [info] update#setState idle
+[2019-03-02 08:55:39.663] [main] [info] update#setState checking for updates
+[2019-03-02 08:55:39.665] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 08:55:39.665] [main] [info] update#setState idle
+[2019-03-02 09:55:39.694] [main] [info] update#setState checking for updates
+[2019-03-02 09:55:39.697] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 09:55:39.697] [main] [info] update#setState idle
+[2019-03-02 10:55:39.704] [main] [info] update#setState checking for updates
+[2019-03-02 10:55:39.706] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 10:55:39.706] [main] [info] update#setState idle
+[2019-03-02 11:55:39.735] [main] [info] update#setState checking for updates
+[2019-03-02 11:55:39.741] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 11:55:39.741] [main] [info] update#setState idle
+[2019-03-02 12:55:39.741] [main] [info] update#setState checking for updates
+[2019-03-02 12:55:39.746] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 12:55:39.746] [main] [info] update#setState idle
+[2019-03-02 13:55:39.771] [main] [info] update#setState checking for updates
+[2019-03-02 13:55:39.775] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 13:55:39.775] [main] [info] update#setState idle
+[2019-03-02 14:55:39.803] [main] [info] update#setState checking for updates
+[2019-03-02 14:55:39.806] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 14:55:39.806] [main] [info] update#setState idle
+[2019-03-02 15:55:39.835] [main] [info] update#setState checking for updates
+[2019-03-02 15:55:39.837] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 15:55:39.837] [main] [info] update#setState idle
+[2019-03-02 16:55:39.850] [main] [info] update#setState checking for updates
+[2019-03-02 16:55:39.852] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 16:55:39.852] [main] [info] update#setState idle
+[2019-03-02 17:55:39.881] [main] [info] update#setState checking for updates
+[2019-03-02 17:55:39.883] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 17:55:39.883] [main] [info] update#setState idle
+[2019-03-02 18:55:39.913] [main] [info] update#setState checking for updates
+[2019-03-02 18:55:39.917] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 18:55:39.917] [main] [info] update#setState idle
+[2019-03-02 19:55:39.942] [main] [info] update#setState checking for updates
+[2019-03-02 19:55:39.947] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 19:55:39.947] [main] [info] update#setState idle
+[2019-03-02 20:55:39.957] [main] [info] update#setState checking for updates
+[2019-03-02 20:55:39.961] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 20:55:39.961] [main] [info] update#setState idle
+[2019-03-02 21:55:39.987] [main] [info] update#setState checking for updates
+[2019-03-02 21:55:39.991] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 21:55:39.991] [main] [info] update#setState idle
+[2019-03-02 22:55:40.019] [main] [info] update#setState checking for updates
+[2019-03-02 22:55:40.021] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 22:55:40.022] [main] [info] update#setState idle
+[2019-03-02 23:55:40.051] [main] [info] update#setState checking for updates
+[2019-03-02 23:55:40.053] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-02 23:55:40.053] [main] [info] update#setState idle
+[2019-03-03 00:55:40.082] [main] [info] update#setState checking for updates
+[2019-03-03 00:55:40.084] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 00:55:40.084] [main] [info] update#setState idle
+[2019-03-03 01:55:40.115] [main] [info] update#setState checking for updates
+[2019-03-03 01:55:40.118] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 01:55:40.119] [main] [info] update#setState idle
+[2019-03-03 02:55:40.143] [main] [info] update#setState checking for updates
+[2019-03-03 02:55:40.147] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 02:55:40.147] [main] [info] update#setState idle
+[2019-03-03 03:55:40.164] [main] [info] update#setState checking for updates
+[2019-03-03 03:55:40.168] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 03:55:40.168] [main] [info] update#setState idle
+[2019-03-03 04:55:40.197] [main] [info] update#setState checking for updates
+[2019-03-03 04:55:40.201] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 04:55:40.201] [main] [info] update#setState idle
+[2019-03-03 05:55:40.227] [main] [info] update#setState checking for updates
+[2019-03-03 05:55:40.228] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 05:55:40.228] [main] [info] update#setState idle
+[2019-03-03 06:55:40.255] [main] [info] update#setState checking for updates
+[2019-03-03 06:55:40.257] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 06:55:40.257] [main] [info] update#setState idle
+[2019-03-03 07:55:40.287] [main] [info] update#setState checking for updates
+[2019-03-03 07:55:40.290] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 07:55:40.290] [main] [info] update#setState idle
+[2019-03-03 08:55:40.319] [main] [info] update#setState checking for updates
+[2019-03-03 08:55:40.322] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 08:55:40.323] [main] [info] update#setState idle
+[2019-03-03 09:55:40.343] [main] [info] update#setState checking for updates
+[2019-03-03 09:55:40.348] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 09:55:40.349] [main] [info] update#setState idle
+[2019-03-03 10:55:40.350] [main] [info] update#setState checking for updates
+[2019-03-03 10:55:40.352] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 10:55:40.352] [main] [info] update#setState idle
+[2019-03-03 11:55:40.380] [main] [info] update#setState checking for updates
+[2019-03-03 11:55:40.384] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 11:55:40.384] [main] [info] update#setState idle
+[2019-03-03 12:55:40.412] [main] [info] update#setState checking for updates
+[2019-03-03 12:55:40.416] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 12:55:40.416] [main] [info] update#setState idle
+[2019-03-03 13:55:40.444] [main] [info] update#setState checking for updates
+[2019-03-03 13:55:40.449] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 13:55:40.449] [main] [info] update#setState idle
+[2019-03-03 14:55:40.477] [main] [info] update#setState checking for updates
+[2019-03-03 14:55:40.481] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 14:55:40.481] [main] [info] update#setState idle
+[2019-03-03 15:55:40.509] [main] [info] update#setState checking for updates
+[2019-03-03 15:55:40.514] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 15:55:40.514] [main] [info] update#setState idle
+[2019-03-03 16:55:40.539] [main] [info] update#setState checking for updates
+[2019-03-03 16:55:40.542] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 16:55:40.542] [main] [info] update#setState idle
+[2019-03-03 17:55:40.566] [main] [info] update#setState checking for updates
+[2019-03-03 17:55:40.568] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 17:55:40.568] [main] [info] update#setState idle
+[2019-03-03 18:55:40.579] [main] [info] update#setState checking for updates
+[2019-03-03 18:55:40.583] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 18:55:40.583] [main] [info] update#setState idle
+[2019-03-03 19:55:40.595] [main] [info] update#setState checking for updates
+[2019-03-03 19:55:40.599] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 19:55:40.599] [main] [info] update#setState idle
+[2019-03-03 20:55:40.627] [main] [info] update#setState checking for updates
+[2019-03-03 20:55:40.629] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 20:55:40.629] [main] [info] update#setState idle
+[2019-03-03 21:55:40.659] [main] [info] update#setState checking for updates
+[2019-03-03 21:55:40.661] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 21:55:40.661] [main] [info] update#setState idle
+[2019-03-03 22:55:40.687] [main] [info] update#setState checking for updates
+[2019-03-03 22:55:40.691] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 22:55:40.691] [main] [info] update#setState idle
+[2019-03-03 23:55:40.719] [main] [info] update#setState checking for updates
+[2019-03-03 23:55:40.721] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-03 23:55:40.721] [main] [info] update#setState idle
+[2019-03-04 00:55:40.747] [main] [info] update#setState checking for updates
+[2019-03-04 00:55:40.748] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-04 00:55:40.748] [main] [info] update#setState idle
+[2019-03-04 01:55:40.751] [main] [info] update#setState checking for updates
+[2019-03-04 01:55:40.753] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-04 01:55:40.753] [main] [info] update#setState idle
+[2019-03-04 02:55:40.779] [main] [info] update#setState checking for updates
+[2019-03-04 02:55:40.782] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-04 02:55:40.782] [main] [info] update#setState idle
+[2019-03-04 03:55:40.811] [main] [info] update#setState checking for updates
+[2019-03-04 03:55:40.813] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-04 03:55:40.813] [main] [info] update#setState idle
+[2019-03-04 04:55:40.839] [main] [info] update#setState checking for updates
+[2019-03-04 04:55:40.841] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-04 04:55:40.841] [main] [info] update#setState idle
+[2019-03-04 05:55:40.870] [main] [info] update#setState checking for updates
+[2019-03-04 05:55:40.873] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-04 05:55:40.873] [main] [info] update#setState idle
+[2019-03-04 06:55:40.899] [main] [info] update#setState checking for updates
+[2019-03-04 06:55:40.904] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-04 06:55:40.904] [main] [info] update#setState idle
+[2019-03-04 07:55:40.931] [main] [info] update#setState checking for updates
+[2019-03-04 07:55:40.933] [main] [error] Error: net::ERR_INTERNET_DISCONNECTED
+[2019-03-04 07:55:40.933] [main] [info] update#setState idle

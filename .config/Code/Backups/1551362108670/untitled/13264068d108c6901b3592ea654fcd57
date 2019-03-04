@@ -1,0 +1,4 @@
+untitled:Untitled-1
+git config --global user.name "Genti"
+git config --global user.email "resuligent@gmail.com"
+

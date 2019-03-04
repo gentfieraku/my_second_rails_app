@@ -1,0 +1,4 @@
+http:talk.jekyllrb.com:80:.:	0	17955	http:talk.jekyllrb.com:80:talk.jekyllrb.com:443::n:1551367886:h2:y:1551356071:n::
+http:ads.panorama.com.al:80:.:	0	17959	http:ads.panorama.com.al:80:ads.panorama.com.al:443::n:1551684864:h2:y:1551683958:n::
+http:www.panorama.com.al:80:.:^userContextId=5	0	17959	http:www.panorama.com.al:80:www.panorama.com.al:443::n:1551684320:h2:y:1551683958:n:^userContextId=5:
+http:ads.panorama.com.al:80:.:^userContextId=5	0	17959	http:ads.panorama.com.al:80:ads.panorama.com.al:443::n:1551684320:h2:y:1551683958:n:^userContextId=5:

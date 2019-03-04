@@ -1,0 +1,793 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>SQL Fundamentals | SoloLearn: Learn to code for FREE!</title>
+    
+
+    <link rel="shortcut icon" href="/Images/favicon.ico">
+    <link rel="icon" type="image/png" href="/Images/favicon-192x192.png" sizes="192x192" style="background-color: white;">
+    <link rel="apple-touch-icon" sizes="180x180" href="/Images/favicon-180x180.png" style="background-color: white;">
+
+    <meta name="viewport" content="width=400">
+   
+    <link href="/Styles/Application?v=TytlpNHf_LbYBSypm6rxef6OW2u9T8L2VgkLifGQwJ01" rel="stylesheet"/>
+
+</head>
+<body>
+
+
+    <div id="header" class="material level3">
+        <div class="headerNav">
+            <ul>
+                <!-- Getting From DB -->
+                <li id="courses">
+                    <a href="/Courses/" target="_blank">COURSES</a>
+                </li>
+                <li id="codes">
+                    <a href="/Codes/" target="_blank">CODE PLAYGROUND</a>
+                </li>
+                <li id="discuss">
+                    <a href="/Discuss/" target="_blank">DISCUSS</a>
+                </li>
+                <li id="leaders">
+                    <a href="/Leaderboard/" target="_blank">TOP LEARNERS</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+    <div id="logo">
+        <a href="https://www.sololearn.com"></a>
+    </div>
+    <div class="sandwichButton"></div>
+    
+
+<div id="app" data-bind="attr:{ class: 'material ' +  (app.isMobile ? 'isMobile ' : '') + app.ViewService.currentView().name }" class="material">
+    <div id="appHeader" class="material" data-bind="style: { 'backgroundColor': $root.primaryPalette()[1] }">
+        <div class="wrapper">
+            <div class="course layer">
+                <div class="content">
+                    <img class="icon" data-bind="attr: { src: icon, alt: name }" />
+                    
+                </div>
+            </div>
+            <div class="module layer" data-bind="if: module">
+                <div class="content">
+                    <img class="icon" data-bind="click: navigateToCourse, attr: { src: module().iconSource(), alt: module().name() }" />
+                    <span class="title" data-bind="click: navigateToCourse, text: module().name()"></span>
+                </div>
+            </div>
+            <div class="lesson layer" data-bind="if: lesson">
+                <div class="content">
+                    <span class="title" data-bind="text: lesson().name(), click: navigateToModule"></span>
+                </div>
+            </div>
+            <!-- ko if: profile.id() > 0 -->
+            <div class="right">
+                <span data-bind="text: app.texts.headerPoints"></span>
+                <div id="headerPoints" data-bind="text: app.Progress.points()"></div>
+            </div>
+            <!-- /ko -->
+            
+        </div>
+    </div>
+    <button id="navigateBackButton" data-bind="css: { isEnabled: isBackVisible }, click: navigateBack" class="materialIcon"></button>
+    <div id="splashView" class="view">
+        <div id="splashCircle" data-bind="style: { 'backgroundColor': $root.primaryPalette()[1] }">
+            <img data-bind="attr:{ src: icon }" alt="" />
+        </div>
+        <div data-bind="text: app.texts.splashInitializing"></div>
+    </div>
+    <div id="modulesView" class="modulePanel view" data-bind="template: { foreach: moduleItems, name: getModuleTemplate }"></div>
+    <!-- ko with: module -->
+    <div id="lessonsView" class="lessonPanel view" data-bind="template: { foreach: lessons }">
+        <div data-bind="attr: { 'class': 'appLesson ' + typeClass() + ' ' + stateClass() }, click: $parents[1].loadLesson">
+            <div class="number">
+                <span data-bind="text: type() == 0 ? ($index() + 1) + '/' + $parent.lessonCount() : ''"></span>
+            </div>
+            <div class="name" data-bind="text: name">
+            </div>
+            <div class="rating">
+                <i data-bind="attr: { 'class': rating() > 0 ? 'star' : ''}"></i>
+                <i data-bind="attr: { 'class': rating() > 1 ? 'star' : ''}"></i>
+                <i data-bind="attr: { 'class': rating() > 2 ? 'star' : ''}"></i>
+            </div>
+            <div class="info">
+                <i class="icon"></i>
+                <span data-bind="text: type() == 0 ? ((mode() == 1 || mode() == 2) ? quizCount() + ' questions' : 'Video ' + videoDurationText()) : quizCount() + ' questions'"></span>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+    <button id="addComment" class="actionButton" data-bind="style: { backgroundColor: $root.accentPalette()[2] }, click: $root.comment().addComment"></button>
+    <!-- ko with: video -->
+    <div id="videoView" class="view elevated">
+        <!-- ko with: lesson -->
+        <div id="videoMaterial">
+            <div class="lessonViewInfo" data-bind="style: { backgroundColor: $root.primaryPalette()[2] }">
+                <span class="number" data-bind="text: ($parent.quizIndex() + 1) + '/' + quizCount()"></span>
+                <span data-bind="attr: { class: 'switchButtons ' + modeClass() }">
+                    <span class="switchText" data-bind="click: $parents[1].loadText" title="Open Text">TEXT</span>
+                    <span class="switchVideo" data-bind="click: $parents[1].loadVideo" title="Open Video">VIDEO</span>
+                </span>
+                <div class="lessonOutline" data-bind="template: { name: 'lesson-timeline', foreach: $parent.timeline }, attr: { class: 'lessonOutline ' + modeClass() }"></div>
+            </div>
+
+            <div id="videoPlayer" data-bind="attr: {'class' : '' + modeClass()}">
+                <div class="lessonLoading" data-bind="if:!isLoaded()">
+                    <div class="materialProgressbar intermediate"><i data-bind="style: { backgroundColor: $root.accentPalette()[1] }"></i></div>
+                </div>
+            </div>
+            <!-- ko with: $parent -->
+            <div id="videoControls">
+                <div class="videoProgressbar" data-bind="progressbar: { value: videoPercent, seekStart: seekStart, seek: seekVideo }">
+                    <div class="videoOverlay"></div>
+                    <div class="track">
+                        <i class="playProgress mainBar" ></i>
+                    </div>
+                    <i class="scrub"></i>
+                </div>
+                <div class="chrome">
+                    <button class="videoButton play" data-bind="click: playPause, css:{ pause: inPlayMode() }"></button>
+                    <div class="videoVolumePanel">
+                        <button class="videoButton volume" data-bind="click: muteToggle, attr: { class: 'videoButton volume ' + volumeClass() }"></button>
+                        <div class="videoVolumeBar" data-bind="slidervalue:volume">
+                            <div class="slider">
+                                <i class="scrub"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="videoTime">
+                        <span class="current" data-bind="text:videoTime"></span> / <span class="total" data-bind="text:videoDuration"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="discussionButton">
+                <a data-bind="attr: { href: lesson().tags() != null ? '/Discuss?query=' + $root.encodedTags() + ' ' + lesson().encodedTags() : '/Discuss?query=' + $root.encodedTags() }" target="_blank" class="discuss materialIcon" title="Discuss">
+                    <i class="icon"></i>
+                    <span class="label">Q&A</span>
+                </a>
+                <span class="badge" data-bind="text: questionsCount(), visible: questionsCount() != 0"></span>
+            </div>
+            <button data-bind="click: loadComments, disable: disableCommentButton()" class="openComments materialButton" title="Comments">
+                <span data-bind="text: commentsCount"></span> Comments
+            </button> 
+            <!-- /ko -->
+            <button class="actionButton skipVideoButton" data-bind="style: { backgroundColor: $root.accentPalette()[2] }, click: $parent.skipVideo, attr: { class: 'actionButton skipVideoButton ' + modeClass() }"></button>
+            <!-- ko with: $root.comment -->
+            <!-- ko if: $parents[1].showComments() -->
+            <div id="commentsContainer" data-bind="template: { name: 'commentOutline', afterRender: defineContainers }"></div>
+            <!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <!-- ko with: text -->
+    <div id="textView" class="view elevated">
+        <!-- ko with: lesson -->
+        <div class="lessonViewInfo" data-bind="style: { backgroundColor: $root.primaryPalette()[2] }">
+            <span class="number" data-bind="text: ($parent.quizIndex() + 1) + '/' + quizCount()"></span>
+            <span data-bind="attr: { class: 'switchButtons ' + modeClass() }">
+                <span class="switchText" data-bind="click: $parents[1].loadText" title="Open Text">TEXT</span>
+                <span class="switchVideo" data-bind="click: $parents[1].loadVideo" title="Open Video">VIDEO</span>
+            </span>
+            <div class="lessonOutline" data-bind="template: { name: 'lesson-timeline', foreach: $parent.timeline }, attr: { class: 'lessonOutline ' + modeClass() }"></div>
+        </div>
+        <div class="lessonLoading" data-bind="if:!isLoaded()">
+            <div class="materialProgressbar intermediate"><i data-bind="style: { backgroundColor: $root.accentPalette()[1] }"></i></div>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: quiz -->
+        <div class="textContentContainer wrapper">
+            <div id="textContent" class="material" data-bind="attr: {'class' : lesson().modeClass() }, textFormat: { text: quiz().textContent(), glossaryClick: loadTooltip, glossary: course.glossary() }, click: closeTooltips"></div>
+            <button data-bind="click: loadComments, disable: disableCommentButton()" class="openComments materialButton" title="Comments">
+                <span data-bind="text: commentsCount"></span> Comments
+            </button>
+        </div>
+        <div class="discussionButton">
+            <a data-bind="attr: { href: lesson().tags() != null ? '/Discuss?query=' + $root.encodedTags() + ' ' + lesson().encodedTags() : '/Discuss?query=' + $root.encodedTags() }" target="_blank" class="discuss materialIcon" title="Discuss">
+                <i class="icon"></i>
+                <span class="label">Q&A</span>
+                <span class="badge" data-bind="text: questionsCount(), visible: questionsCount() != 0"></span>
+            </a>
+        </div>
+        <!-- /ko -->
+        <button class="actionButton skipTextButton" data-bind="style: { backgroundColor: $root.accentPalette()[2] }, click: skipText"></button>
+        <!-- ko with: $root.comment -->
+        <!-- ko if: $parent.showComments() -->
+        <div id="commentsContainer" data-bind="template: { name: 'commentOutline', afterRender: defineContainers }"></div>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <!-- ko with: quiz -->
+    <div id="quizView" class="view elevated" data-bind="css: { shortcut: isShortcut }, submitAnswer: check">
+        <!-- ko with: lesson -->
+        <div class="lessonViewInfo material" data-bind="style: { backgroundColor: $root.primaryPalette()[2] }">
+            <span class="number" data-bind="text: ($parent.quizIndex() + 1) + '/' + quizCount()"></span>
+            <div class="lessonOutline" data-bind="template: { name: 'lesson-timeline', foreach: $parent.timeline }"></div>
+        </div>
+        <div class="lessonLoading" data-bind="if:!isLoaded()">
+            <div class="materialProgressbar intermediate"><i data-bind="style: { backgroundColor: $root.accentPalette()[1] }"></i></div>
+        </div>
+        <!-- /ko -->
+        <div class="quizContent">
+            <!-- ko with: quiz -->
+            <div class="quizQuestion">
+                <p class="question" data-bind="html: questionText"></p>
+                <p class="tip" data-bind="text: tipText, style: { color: $root.accentPalette()[2] }"></p>
+            </div>
+            
+            <div id="quizSelector" data-bind="quiz: {
+            quiz: $data,
+            check: $parent.checkQuiz,
+            internalCheck: $parent.check,
+            hint: $parent.hintQuiz,
+            skip: $parent.skipQuiz }">
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="actionBar">
+            <button class="actionButton checkButton" data-bind="style: { backgroundColor: $root.accentPalette()[2] }, click: check"></button>
+            <div class="quizHintButtons">
+                <!-- ko if: lesson() && !lesson().isShortcut()-->
+                <button class="unlock materialIcon" data-bind="click:applyQuizSkip, attr: { title: app.texts.hintSkipTip }, disable: isChecked"><i class="icon"></i><span>Unlock</span></button>
+                <!-- ko if: quiz() -->
+                <!-- ko if: quiz().isHintAvailable() -->
+                <button class="hint materialIcon" data-bind="click:applyQuizHint, attr: { title: app.texts.hintHintTip }, disable: isChecked"><i class="icon"></i><span>Hint</span></button>
+                <!-- /ko -->
+                <div class="discussionButton">
+                    <a data-bind="attr: { href: lesson().tags() != null ? '/Discuss?query=' + $root.encodedTags() + ' ' + lesson().encodedTags() : '/Discuss?query=' + $root.encodedTags() }" target="_blank" class="discuss materialIcon" title="Discuss">
+                        <i class="icon"></i>
+                        <span class="label">Q&A</span>
+                        <span class="badge" data-bind="text: questionsCount(), visible: questionsCount() != 0"></span>
+                    </a>
+                </div>
+                
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: lesson() && lesson().isShortcut()-->
+                <span class="quizAttempts">
+                    <span data-bind="text: app.texts.shortcutAttempts"></span>
+                    <span data-bind="text: shortcutLives, style: { color: $root.accentPalette()[2] }"></span>
+                </span> 
+                <!-- /ko -->
+            </div>
+        </div>
+        
+        <!-- ko template: { if: isChecked, afterRender: app.ViewService.transitions.showQuizResult }  -->
+        <div id="quizResultOverlay" data-bind="css: { correct: isCorrect, wrong: !isCorrect() }, enterkey: continueQuiz, hasFocus: true" tabindex="1">
+            <div id="quizResult" class="material level4">
+                <div class="resultContainer">
+                    <div class="resultIcon"></div>
+                    <!-- ko if: quiz().isVideoAvailable() -->
+                    <button class="backToVideo materialButton small" data-bind="text: app.texts.quizResultWrongBackToVideo, click: backToVideo"></button>
+                    <!-- /ko -->
+                </div>
+                <div class="resultTexts">
+                    <div class="wrongText" data-bind="text:$root.texts.quizResultWrong"></div>
+                    <div class="correctText" data-bind="text:$root.texts.quizResultCorrect"></div>
+                    <button data-bind="click: loadComments, disable: disableCommentButton(), attr: { class: showCommentButton() ? 'openComments materialButton show': 'openComments materialButton' }" title="Comments">
+                        <span data-bind="text: commentsCount"></span> Comments
+                    </button>
+                </div>           
+                <button class="actionButton continueButton" data-bind="click: continueQuiz"></button>
+            </div>
+        </div>
+        <!-- /ko -->
+
+        <!-- ko with: $root.comment -->
+        <!-- ko if: $parent.showComments() -->
+        <div id="commentsContainer" data-bind="template: { name: 'commentOutline', afterRender: defineContainers }"></div>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+
+    <div id="congratsView" class="view">
+        <h1 data-bind="text: app.Progress.isCompleted() ? app.texts.congratsTitle : app.texts.congratsPendingTitle"></h1>
+        <div class="container">
+            <div id="certificate" data-bind="css: { unlocked: app.Progress.isCompleted }">
+                <img src="" alt="" data-bind="attr: { src: app.Progress.isCompleted() ? '/Certificate/SQL/jpg/' : '/Content/certificate.jpg' }" />
+                <div class="overlay">
+                    <div class="progress">
+                        <i data-bind="style: { width:app.Progress.percent() + '%'  }"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="message" data-bind="html: app.Progress.isCompleted() ? app.texts.congratsComplete.replace('{course}', name()) : app.texts.congratsPending">
+
+            </div>
+        </div>
+        
+        <div class="actions">
+            <!-- ko if:app.Progress.isCompleted  -->
+            <a href="/Profile/SQL/" target="_blank" class="materialButton elevated" data-bind="text:app.texts.congratsShare"></a>
+            <!-- /ko -->
+            <button class="materialButton elevated primary" data-bind="text:app.texts.congratsContinue, click: navigateFromCongrats"></button>
+        </div>
+    </div>
+
+    <!-- ko template: {
+        if: app.ViewService.currentAchievement(),
+        afterRender: app.ViewService.transitions.showAchievement,
+        data: app.ViewService.currentAchievement() } -->
+    <a id="unlockedAchievement" class="material level4" href="https://www.sololearn.com/Profile/SQL/" target="_blank">
+        <div class="icon" data-bind="style: { backgroundColor: color }">
+            <img data-bind="attr:{ src: 'https://www.sololearn.com/Icons/Achievements/' + id + '.png' }" alt="" />
+        </div>
+        <div class="details">
+            <div class="title" data-bind="text:$root.texts.achievementUnlockedText"></div>
+            <div class="name" data-bind="text:title"></div>
+        </div>
+    </a>
+    <!-- /ko -->
+    <!-- ko with: app.PopupService -->
+    <div class="fixedView" data-bind="style: { display: dim() ? 'block' : 'none' }">
+        <div id="popup" data-bind="css: { open: dim }">
+            <div class="wrapper" data-bind="foreach:popups">
+                <!-- ko template: { name: template } --><!-- /ko -->
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>
+
+<script type="text/html" id="module-itemTemplate">
+    <!-- ko if:allowShortcut() && state().visualState() == app.models.ProgressState.Disabled -->
+    <div class="shortcutContent">
+        <button class="shortcut materialResponse material" data-bind="text: $root.texts.shortcutButton, click: $parent.jumpAhead"></button>
+    </div>
+    <!-- /ko -->
+    <div data-bind="attr: { 'class': 'appModule ' + alignmentClass() }">
+        <div class="content" data-bind="click: $parent.loadModule">
+            <div data-bind="attr:{ class:'appModuleCircle materialResponse ' + stateClass() }">
+                <img data-bind="attr: { 'src': iconSource() }" alt="" />
+            </div>
+            <span data-bind="text: name"></span>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="module-certificateTemplate">
+    <div class="appModule center certificate">
+        <div data-bind="click: $parent.loadModule, attr:{ class: 'content ' + stateClass() }">
+            <i class="icon"></i>
+            <span>Certificate</span>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="quiz-multipleChoice">
+    <div class="answers multipleChoiceQuiz" data-bind="shuffledEach:answers">
+        <div class="answer" data-bind="css:{ materialRadio: !$parent.isMultiple(), materialCheckbox: $parent.isMultiple }">
+            <div class="icon">
+                <div class="outline"></div>
+                <div class="fill"></div>
+            </div>
+            <span data-bind="text:text"></span>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="quiz-imageChoice">
+    <div class="answers imageChoiceQuiz" data-bind="shuffledEach:answers">
+        <div class="answer materialCheckbox">
+            <img class="answerImage" data-bind="attr:{ src:'https://api.sololearn.com/web/DownloadFile?id=' + text, alt: text }" />
+            <div class="selection">
+                <div class="icon">
+                    <div class="outline"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="quiz-strikeOut">
+    <div class="answers strikeOutQuiz" data-bind="shuffledEach:answers">
+        <div class="answer">
+            <span data-bind="text:text"></span>
+            <div class="strike">
+                <img src="/Content/strike.png" alt="" />
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="quiz-typeIn">
+    <div class="typeInQuiz">        
+        <!-- ko component: { name: "material-typeIn", params: { 
+            text: answer().text, 
+            inputText: $quiz.text,
+            prefix: answer().properties.prefix, 
+            postfix: answer().properties.postfix, 
+            isChecked: $quiz.isChecked,
+            requireBlur: $quiz.requireBlur,
+            hasFocus: $quiz.hasFocus,
+            isCorrect: $quiz.isCorrect,
+            complete: $quiz.complete }} -->
+        <!-- /ko -->
+    </div>
+</script>
+
+<script type="text/html" id="quiz-placeholderTypeIn">
+    <div class="answers placeholderTypeInQuiz placeholderQuiz" data-bind="placeholder:$data">
+        <div class="answer">            
+            <!-- ko component: { name: "material-typeIn", params: {
+                text: text,
+                inputText: $quiz.answers[$index].text,
+                prefix: properties.prefix,
+                postfix: properties.postfix,
+                isChecked: $quiz.isChecked,
+                requireBlur: $quiz.answers[$index].complete,
+                hasFocus: $quiz.answers[$index].hasFocus,
+                isCorrect: $quiz.answers[$index].isCorrect ,
+                isFilled: $quiz.answers[$index].isFilled }} -->
+            <!-- /ko -->
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="quiz-placeholderDragAndDrop">
+    <div class="placeholderDragAndDropQuiz placeholderQuiz">
+        <div class="placeholders" data-bind="placeholder:$data">
+            <div class="answer" data-bind="style: { color: $root.accentPalette()[2] }"></div>
+            <div class="underline"></div>
+        </div>
+        <div class="answers" data-bind="shuffledEach: answers()">
+            <div class="answer" data-bind="text:text, style: { color: $root.accentPalette()[2] }, attr: { 'data-id': id }">
+
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="quiz-placeholderImageDragAndDrop">
+    <div class="placeholderImageDragAndDropQuiz placeholderQuiz">
+        <div class="placeholders" data-bind="placeholder:$data">
+            <div class="answer">
+                <img class="answerImage" alt="" />
+            </div>
+        </div>
+        <div class="answers" data-bind="shuffledEach: answers()">
+            <div class="answer material" data-bind="attr: { 'data-id': id }">
+                <img class="answerImage" data-bind="attr:{ src:'https://api.sololearn.com/web/DownloadFile?id=' + text }, event: { load: $quiz.resizePlaceholders }" alt="" />
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="quiz-reorder">
+    <div class="answers reorderQuiz" data-bind="shuffledEach:answers">
+        <div class="answer">
+            <span data-bind="text:text"></span>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="quiz-imageReorder">
+    <div class="answers imageReorderQuiz" data-bind="shuffledEach:answers">
+        <div class="answer">
+            <img class="answerImage" data-bind="attr:{ src:'https://api.sololearn.com/web/DownloadFile?id=' + text }" alt="" />
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="lesson-timeline">
+    <span data-bind="   click: $parents[1].loadLessonLink,
+                        css:{ passed: state == app.models.ProgressState.Normal,
+                        active: state == app.models.ProgressState.Active,
+                        quiz: !isVideo, video: isVideo }">
+        <img class="left" data-bind="attr: { src: $root.arrowSrc() }" alt=" " />
+        <i></i>
+        <img class="right" data-bind="attr: { src: $root.arrowSrc() }" alt=" " />
+    </span>
+</script>
+
+<script type="text/html" id="material-typeIn">
+    <div class="typeInControl">
+        <div class="prefix" data-bind="text: prefix" />
+        <div class="answer">
+            <span class="realText" data-bind="text:realText"></span>
+            <span data-bind="if: isChecked" class="resultText">
+                <span class="correct" data-bind="text:correctText"></span><span class="wrong" data-bind="text:wrongText"></span>
+            </span>
+            <!-- ko if: !isChecked() -->
+            <!-- ko component: { name: "material-input", params: { text: text, maxLength: realText.length, enterkey: onEnter, hasFocus: hasFocus } } --><!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <div class="postfix" data-bind="text: postfix" />
+    </div>
+</script>
+
+<script type="text/html" id="material-input">
+    <div class="materialInput" data-bind="enterkey: onEnter">
+        <input type="text" data-bind="value:text, valueUpdate: 'afterkeydown', hasFocus: hasFocus" autocapitalize="off" />
+        <!-- ko if: text().length == 0 -->
+        <label data-bind="text:label"></label>
+        <!-- /ko -->
+        <div class="cursor"></div>
+        <div class="underline"></div>
+        <div class="focusedUnderline"></div>
+    </div>
+</script>
+
+<script type="text/html" id="popup-message">
+    <div class="popup material level5">
+        <div class="content" data-bind="text:message">
+
+        </div>
+        <div class="buttons">
+            <!-- ko if:noText -->
+                <button class="materialButton" data-bind="text: noText, click: noClick"></button>
+            <!-- /ko -->
+            <button class="materialButton primary" data-bind="text: yesText, click: yesClick"></button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="commentOutline">
+    <div class="commentsFilter">
+        <p>COMMENTS</p>
+        <select class="commentsType" data-bind="options: commentsFilter, optionsText: 'name', optionsValue: 'id', value: selectedField"></select>
+    </div>
+    <div id="comments" data-bind="template: { name: 'comment', foreach: comments, afterAdd: addAnimation }"></div>
+
+    <p class="noComments" data-bind="visible: !isLoading() && comments().length == 0">No Comments</p>
+
+    <div id="replyBox" class="top material level3">
+        <div class="replyWrapper">
+            <div class="avatar">
+                <img src="/Images/NoAvatar.jpg" alt="" />
+            </div>
+            <div class="content">
+                <div class="name">
+                    Genti
+                </div>
+                <div class="text">
+                    <textarea id="replyText" data-bind="value: replyComment().message, valueUpdate: 'afterkeydown', attr: { class: replyComment().message.hasError() ? replyComment().message.className : '' }"></textarea>
+                </div>
+                <div class="controls">
+                    <button class="cancel materialButton small" data-bind="click: replyCancel">Cancel</button>
+                    <button class="reply materialButton primary small" data-bind="click: submitReply"><span>Reply</span></button>
+                </div>
+            </div>
+            <div class="replyBoxLoader">
+                <svg class="materialSpinner">
+                    <circle class="path" cx="25" cy="25" r="12" fill="none" stroke-width="3" stroke-miterlimit="10" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="loader">
+        <svg class="materialSpinner">
+            <circle class="path" cx="25" cy="25" r="12" fill="none" stroke-width="3" stroke-miterlimit="10" />
+        </svg>
+    </div>
+</script>
+
+<script type="text/html" id="comment">
+    <div class="commentContainer">
+        <div data-bind="attr: { class: parentId == null ? 'primary comment' : 'secondary comment'}">
+            <a data-bind="attr: { href: '/Profile/' + userId, target: '_blank' }" class="avatar">
+                <img data-bind="attr: { src: hasAvatar() ? '/Icons/Avatars/' + userId + '.jpg' : '/Images/NoAvatar.jpg' }" alt="" />
+            </a>
+            <div class="content">
+                <div class="date" data-bind="text: date()"></div>
+                <a class="name" data-bind="text: userName, attr: { href: '/Profile/' + userId, target: '_blank' }"></a>
+                <div class="text" data-bind="html: replacedMessage()"></div>
+                <div class="editText"></div>
+                <div class="commentActions">
+                    <div class="vote">
+                        <div data-bind="attr: { 'class': vote() == 1 ? 'upvote active': 'upvote'}, click: $root.comment().voting" data-value="1"></div>
+                        <span data-bind="text: votes() > 0 ? '+' + votes() : votes()"></span>
+                        <div data-bind="attr: { 'class': vote() == -1 ? 'downvote active': 'downvote'}, click: $root.comment().voting" data-value="-1"></div>
+                    </div>
+                    <div class="controls">
+                        <!-- ko if: parentId == null -->
+                        <button data-bind="text: replies() + repliesLabel(), disable: replies() == 0, attr: { 'class': replies() == 0 ? 'disabled openReplies materialButton small': 'openReplies materialButton small'}, click: $root.comment().loadReplies"></button> <!--|| loadedRepliesCount() == replies()-->
+                        <!-- /ko -->
+                        <!-- ko if: userId == 13000547 -->
+                        <button class="edit materialButton small" data-bind="visible: userId == 13000547, click: $root.comment().edit">Edit</button>
+                        <!-- /ko -->
+                        <button class="reply materialButton small primary" data-bind="click: $root.comment().reply">Reply</button>
+                    </div>
+                </div>
+                <!-- ko if: userId == 13000547 -->
+                <div class="editControls">
+                    <button class="delete materialButton small negative" data-bind="click: $root.comment().deleteComment">Delete</button>
+                    <button class="cancel materialButton small" data-bind="click: $root.comment().editCancel">Cancel</button>
+                    <button class="save materialButton small positive" data-bind="click: $root.comment().submitEdit">Save</button>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- ko if: parentId == null -->
+        <div class="replies">
+            <div class="repliesContent" data-bind="template: { name: 'comment', foreach: commentReplies, afterAdd: $root.comment().addAnimation }"></div>
+            <div class="gap" data-bind="attr: { class: loadedRepliesCount() == replies() && replies() != 0 ? 'gap hide' : 'gap'}">
+                <button data-bind="attr: { class: loadedRepliesCount() == replies() || loadedRepliesCount() == 0 ? 'loadReplies hide' : 'loadReplies materialButton'}, click: $root.comment().loadReplies">Load More</button>
+            </div>
+            <div class="repliesLoader">
+                <svg class="materialSpinner">
+                    <circle class="path" cx="25" cy="25" r="12" fill="none" stroke-width="3" stroke-miterlimit="10" />
+                </svg>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</script>
+
+<div id="sidebar">    
+    <div id="profile">
+    <!-- ko with: profile -->
+    <!-- ko if: id() > 0 -->
+    <a href="https://www.sololearn.com/Profile/SQL/" target="_blank" class="avatar" data-bind="style: { backgroundColor: $root.primaryPalette()[0] }">
+        <!-- ko if: hasAvatar -->
+        <img data-bind="attr: { src: 'https://api.sololearn.com/Uploads/Avatars/' + id() + '.jpg' }" alt="" />
+        <!-- /ko -->
+    </a>
+    <div class="details">
+        <a class="name" data-bind="text: name" href="https://www.sololearn.com/Profile/SQL/" target="_blank"></a>
+        <a class="email" data-bind="text: email" href="https://www.sololearn.com/Profile/SQL/" target="_blank"></a>
+        <span class="reset" data-bind="click: resetProgress">Reset</span> 
+        <i class="sep"></i>
+        <a class="logout" href="/User/Logout">Sign out</a>
+    </div>        
+    <!-- /ko -->    
+    <!-- /ko -->
+</div>
+
+</div>
+    <div id="copyright">&copy; 2019 SoloLearn Inc.</div>
+    <script src="/Scripts/AppLibs?v=H3duJUf2HFMy6i47SPdwCT-Gczmw1ko4wNLmlqOhnBs1"></script>
+
+    <script src="/Scripts/AppCore?v=3tbMjhl9aK3WjlyS3TseUpWr2l6W00WX07tbH-n9xYc1"></script>
+
+    <script src="/Scripts/moment?v=bmoFxRRdRbP5sP7BxiS3qr5rYmgVWxXpo7IAWPIIbpM1"></script>
+
+    
+    <!-- Google Analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-42641357-19', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <script type="text/javascript">
+        window.layout = window.layout || {};
+        (function () {
+            var resizeListeners = [];
+            window.layout.onResize = function (callback) {
+                if (typeof callback == 'function') {
+                    resizeListeners.push(callback);
+                }
+            }
+
+            window.layout.notifyResize = function () {
+                for (var i = 0; i < resizeListeners.length; i++) {
+                    resizeListeners[i]();
+                }
+            };
+
+            window.layout.offResize = function (listener) {
+                var index = resizeListeners.indexOf(listener);
+                if (index > -1) {
+                    resizeListeners.splice(index, 1);
+                }
+            };
+
+        })();
+
+        (function ($) {
+            // Constructor
+            function FT(elem) {
+                this.$textarea = $(elem);
+                this._init();
+            }
+            FT.prototype = {
+                _init: function () {
+                    var _this = this;
+                    var maxLength = 2048;
+                    var maxLines = 6;
+
+                    // Insert wrapper elem & pre/span for textarea mirroring
+                    this.$textarea.attr('maxlength', maxLength);
+                    this.$textarea.wrap('<div class="text-wrap" />');
+                    this.$textarea.after('<p class="textareaFeed"><span class="count">' + (maxLength - this.$textarea.val().length) + '</span> characters remaining</p>');
+                    this.$textareaFeed = this.$textarea.next();
+                    this.$charactersCount = this.$textareaFeed.find('.count');
+                    // Add input event listeners
+                    // * input for modern browsers
+                    // * propertychange for IE 7 & 8
+                    // * keyup for IE >= 9: catches keyboard-triggered undos/cuts/deletes
+                    // * change for IE >= 9: catches mouse-triggered undos/cuts/deletions (when textarea loses focus)
+                    this.$textarea.on('input propertychange keyup change', function () {
+                        var textLength = _this.$textarea.val().length;
+                        var textRemaining = maxLength - textLength;
+
+                        _this.$charactersCount.text(textRemaining);
+                    });
+
+                    // jQuery val() strips carriage return chars by default (see http://api.jquery.com/val/)
+                    // This causes issues in IE7, but a valHook can be used to preserve these chars
+                    $.valHooks.textarea = {
+                        get: function (elem) {
+                            return elem.value.replace(/\r?\n/g, "\r\n");
+                        }
+                    };
+                    // Mirror contents once on init
+                }
+            };
+            // jQuery plugin wrapper
+            $.fn.flexText = function () {
+                return this.each(function () {
+                    // Check if already instantiated on this elem
+                    if (!$.data(this, 'flexText')) {
+                        // Instantiate & store elem + string
+                        $.data(this, 'flexText', new FT(this));
+                    }
+                });
+            };
+        })(jQuery);
+
+        app.clientID = 'Web.SoloLearn.SQL';
+        app.designMode = 'solid';
+        app.courseID = 1060 +0;
+        app.alias = 'SQL';
+        app.debug = 'false' === 'true';
+        app.dontSync = false;
+        if (app.debug) {
+            app.host = 'http://api.sololearn.com/web/';//'http://localhost/web/';
+        }
+
+        app.aliases = {
+            "cplusplus": "cpp",
+            "c": "c",
+            "java": "java",
+            "php": "php",
+            "html": "html",
+            "css": "css",
+            "javascript": "js",
+            "jquery": "js",
+            "python": "py",
+            "csharp": "cs",
+            "ruby": "rb",
+            "kotlin": "kt",
+            "swift": "swift",
+        }
+    </script>
+
+</body>
+</html>
+ónd.åÉ      \|——\|—‘@ùŸ       #    :https://www.sololearn.com/Play/SQL necko:classified 1 strongly-framed 1 security-info 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 request-method GET response-head HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: text/html; charset=utf-8
+Server: Microsoft-IIS/8.0
+X-AspNetMvc-Version: 5.2
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Date: Thu, 28 Feb 2019 13:50:47 GMT
+Content-Length: 38647
+ original-response-headers Cache-Control: private
+Content-Type: text/html; charset=utf-8
+Server: Microsoft-IIS/8.0
+X-AspNetMvc-Version: 5.2
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Date: Thu, 28 Feb 2019 13:50:47 GMT
+Content-Length: 38647
+ uncompressed-len 0 net-response-time-onstart 584 net-response-time-onstop 587 predictor::resource-count 30 predictor::https://www.sololearn.com/Styles/Application?v=TytlpNHf_LbYBSypm6rxef6OW2u9T8L2VgkLifGQwJ01 1,2,1551684049,12288 predictor::https://www.sololearn.com/Scripts/AppLibs?v=H3duJUf2HFMy6i47SPdwCT-Gczmw1ko4wNLmlqOhnBs1 1,2,1551684049,12288 predictor::https://www.sololearn.com/Scripts/AppCore?v=3tbMjhl9aK3WjlyS3TseUpWr2l6W00WX07tbH-n9xYc1 1,2,1551684049,12288 predictor::https://www.sololearn.com/Scripts/moment?v=bmoFxRRdRbP5sP7BxiS3qr5rYmgVWxXpo7IAWPIIbpM1 1,2,1551684049,12288 predictor::https://www.sololearn.com/Images/appSprite.png 1,2,1551684049,12288 predictor::https://www.sololearn.com/Content/Roboto/roboto-regular.woff 1,2,1551684049,12288 predictor::https://www.youtube.com/iframe_api 1,2,1551684049,12289 predictor::https://www.google-analytics.com/analytics.js 1,2,1551684049,12288 predictor::https://www.sololearn.com/Icons/Courses/1060_web.png 1,2,1551684049,12289 predictor::https://www.sololearn.com/Content/certificate.jpg 1,2,1551684049,12289 predictor::https://www.google-analytics.com/collect?v=1&_v=j73&a=1122465341&t=pageview&_s=1&dl=https%3A%2F%2Fwww.sololearn.com%2FPlay%2FSQL&ul=en-us&de=UTF-8&dt=SQL%20Fundamentals%20%7C%20SoloLearn%3A%20Learn%20to%20code%20for%20FREE!&sd=24-bit&sr=1920x1080&vp=1853x916&je=0&_u=AACAAEAB~&jid=&gjid=&cid=1394563460.1551360086&tid=UA-42641357-19&_gid=440775120.1551360086&z=625105733 1,1,1551361848,8192 predictor::https://www.google-analytics.com/collect?v=1&_v=j73&a=1122465341&t=screenview&_s=2&cd=splashView&dl=https%3A%2F%2Fwww.sololearn.com%2FPlay%2FSQL&ul=en-us&de=UTF-8&dt=SQL%20Fundamentals%20%7C%20SoloLearn%3A%20Learn%20to%20code%20for%20FREE!&sd=24-bit&sr=1920x1080&vp=1853x916&je=0&an=Web.SoloLearn.SQL&av=1.0.0.0&_u=AACAAEAB~&jid=&gjid=&cid=1394563460.1551360086&tid=UA-42641357-19&_gid=440775120.1551360086&z=161949081 1,1,1551361848,8192 predictor::https://s.ytimg.com/yts/jsbin/www-widgetapi-vfliGbzFc/www-widgetapi.js 1,2,1551684049,12288 predictor::https://api.sololearn.com/uploads/Modules/1060/1167_disabled.png 1,2,1551684049,12288 predictor::https://api.sololearn.com/uploads/Modules/1060/1168_disabled.png 1,2,1551684049,12289 predictor::https://api.sololearn.com/uploads/Modules/1060/1169_disabled.png 1,2,1551684049,12289 predictor::https://api.sololearn.com/uploads/Modules/1060/1196_disabled.png 1,2,1551684049,12289 predictor::https://api.sololearn.com/uploads/Modules/1060/1167.png 1,2,1551684049,12289 predictor::https://www.google-analytics.com/collect?v=1&_v=j73&a=1122465341&t=screenview&_s=3&cd=modulesView&dl=https%3A%2F%2Fwww.sololearn.com%2FPlay%2FSQL&ul=en-us&de=UTF-8&dt=SQL%20Fundamentals%20%7C%20SoloLearn%3A%20Learn%20to%20code%20for%20FREE!&sd=24-bit&sr=1920x1080&vp=1853x916&je=0&an=Web.SoloLearn.SQL&av=1.0.0.0&_u=CACAAEAB~&jid=&gjid=&cid=1394563460.1551360086&tid=UA-42641357-19&_gid=440775120.1551360086&z=994790474 1,1,1551361848,8192 predictor::https://www.google-analytics.com/collect?v=1&_v=j73&a=1122465341&t=screenview&_s=4&cd=lessonsView&dl=https%3A%2F%2Fwww.sololearn.com%2FPlay%2FSQL&ul=en-us&de=UTF-8&dt=SQL%20Fundamentals%20%7C%20SoloLearn%3A%20Learn%20to%20code%20for%20FREE!&sd=24-bit&sr=1920x1080&vp=1853x916&je=0&an=Web.SoloLearn.SQL&av=1.0.0.0&_u=CACAAEAB~&jid=&gjid=&cid=1394563460.1551360086&tid=UA-42641357-19&_gid=440775120.1551360086&z=1013335900 1,1,1551361848,8192 predictor::https://www.sololearn.com/Images/NoAvatar.jpg 1,1,1551361848,8193 predictor::https://www.google-analytics.com/collect?v=1&_v=j73&a=1122465341&t=screenview&_s=5&cd=textView&dl=https%3A%2F%2Fwww.sololearn.com%2FPlay%2FSQL&ul=en-us&de=UTF-8&dt=SQL%20Fundamentals%20%7C%20SoloLearn%3A%20Learn%20to%20code%20for%20FREE!&sd=24-bit&sr=1920x1080&vp=1853x916&je=0&an=Web.SoloLearn.SQL&av=1.0.0.0&_u=CACAAEAB~&jid=&gjid=&cid=1394563460.1551360086&tid=UA-42641357-19&_gid=440775120.1551360086&z=1042915088 1,1,1551361848,8192 predictor::https://api.sololearn.com/DownloadFile?id=2785 1,1,1551361848,8192 predictor::https://www.sololearn.com/Play/arrow.png?r=54&g=171&b=203 1,1,1551361848,8192 predictor::https://www.sololearn.com/Content/Roboto/roboto-bold.woff 1,1,1551361848,8192 predictor::https://www.sololearn.com/Content/GothamRoundedBold/gothamrnd-bold.woff 1,1,1551684049,4096 predictor::https://www.sololearn.com/Content/GothamRoundedBook/gothamrnd-book.woff 1,1,1551684049,4096 predictor::https://www.google-analytics.com/r/collect?v=1&_v=j73&a=1334697438&t=pageview&_s=1&dl=https%3A%2F%2Fwww.sololearn.com%2FPlay%2FSQL&ul=en-us&de=UTF-8&dt=SQL%20Fundamentals%20%7C%20SoloLearn%3A%20Learn%20to%20code%20for%20FREE!&sd=24-bit&sr=1440x810&vp=1390x713&je=0&_u=IADAAEAB~&jid=1534521233&gjid=996549922&cid=1394563460.1551360086&tid=UA-42641357-19&_gid=1021538142.1551684050&_r=1&z=1966735305 1,1,1551684049,4096 predictor::https://www.google-analytics.com/collect?v=1&_v=j73&a=1334697438&t=screenview&_s=2&cd=splashView&dl=https%3A%2F%2Fwww.sololearn.com%2FPlay%2FSQL&ul=en-us&de=UTF-8&dt=SQL%20Fundamentals%20%7C%20SoloLearn%3A%20Learn%20to%20code%20for%20FREE!&sd=24-bit&sr=1440x810&vp=1390x713&je=0&an=Web.SoloLearn.SQL&av=1.0.0.0&_u=IADAAEAB~&jid=&gjid=&cid=1394563460.1551360086&tid=UA-42641357-19&_gid=1021538142.1551684050&z=980158697 1,1,1551684049,4096 predictor::https://www.google-analytics.com/collect?v=1&_v=j73&a=1334697438&t=screenview&_s=3&cd=modulesView&dl=https%3A%2F%2Fwww.sololearn.com%2FPlay%2FSQL&ul=en-us&de=UTF-8&dt=SQL%20Fundamentals%20%7C%20SoloLearn%3A%20Learn%20to%20code%20for%20FREE!&sd=24-bit&sr=1440x810&vp=1390x713&je=0&an=Web.SoloLearn.SQL&av=1.0.0.0&_u=KADAAEAB~&jid=&gjid=&cid=1394563460.1551360086&tid=UA-42641357-19&_gid=1021538142.1551684050&z=1106703510 1,1,1551684049,4096   ñ˜

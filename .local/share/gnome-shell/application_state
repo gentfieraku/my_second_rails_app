@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<application-state>
+  <context id="">
+    <application id="gnome-control-center.desktop" open-window-count="1" score="306783653" last-seen="1551359963"/>
+    <application id="firefox.desktop" open-window-count="1" score="640.5" last-seen="1551367725"/>
+    <application id="org.gnome.Nautilus.desktop" open-window-count="2" score="19" last-seen="1551367734"/>
+    <application id="update-manager.desktop" open-window-count="1" score="2" last-seen="1551367753"/>
+    <application id="code.desktop" open-window-count="1" score="38" last-seen="1551367756"/>
+    <application id="gnome-user-accounts-panel.desktop" open-window-count="0" score="0" last-seen="0"/>
+    <application id="gnome-network-panel.desktop" open-window-count="0" score="0" last-seen="0"/>
+    <application id="org.gnome.Terminal.desktop" open-window-count="2" score="350.5" last-seen="1551367782"/>
+    <application id="gnome-software-local-file.desktop" open-window-count="0" score="0" last-seen="0"/>
+    <application id="gnome-terminal.desktop" open-window-count="0" score="0" last-seen="0"/>
+    <application id="gnome-initial-setup.desktop" open-window-count="0" score="50" last-seen="1551355896"/>
+    <application id="org.gnome.Software.desktop" open-window-count="0" score="10" last-seen="1551362098"/>
+    <application id="gnome-system-monitor_gnome-system-monitor.desktop" open-window-count="0" score="0" last-seen="1551363256"/>
+  </context>
+</application-state>
